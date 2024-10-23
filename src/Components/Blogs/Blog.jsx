@@ -1,5 +1,5 @@
-import { CiBookmark } from "react-icons/ci";
-export default function Blog({ blog, handleBookmark }) {
+import { IoBookmarkSharp } from "react-icons/io5";
+export default function Blog({ blog, handleBookmark, handleTime }) {
   const {
     cover,
     title,
@@ -34,22 +34,27 @@ export default function Blog({ blog, handleBookmark }) {
             {reading_time} min read
           </p>
           <button
-            className="text-xs lg:text-sm  text-gray-500"
+            className="text-xl hover:text-[#6047EC] lg:text-sm  text-gray-500"
             onClick={() => handleBookmark(title)}
           >
-            <CiBookmark></CiBookmark>
+            <IoBookmarkSharp />
           </button>
         </div>
       </div>
       <h1 className="text-xl lg:text-2xl font-bold sm:text-md">{title}</h1>
       <p className="text-gray-500 text-xs lg:text-md">
-        {hashtags.map((hashtag) => (
-          <span>{hashtag}</span>
+        {hashtags.map((hashtag, index) => (
+          <span key={index}>{hashtag}</span>
         ))}
       </p>
-      <a className="underline text-[#6047EC] text-xs lg:text-sm" href="">
-        Mark as read
-      </a>
+      <div>
+        <button
+          onClick={() => handleTime(reading_time)}
+          className="underline text-[#6047EC] text-xs lg:text-sm hover:text-[#2e09ff]"
+        >
+          Mark as read
+        </button>
+      </div>
     </div>
   );
 }
